@@ -1,4 +1,13 @@
-.App {
+.active {
+  border: solid white 1px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 50px;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +44,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
