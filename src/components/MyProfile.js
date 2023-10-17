@@ -24,7 +24,10 @@ const MyProfile = () => {
           <img
             className="w-[250px] h-[250px] drop-shadow-2xl border border-white rounded-full overflow-hidden "
             src={
-              "https://react-bank-project.eapi.joincoded.com/" + myprofile.image
+              isLoading
+                ? "/assets/default-profile-image.svg"
+                : "https://react-bank-project.eapi.joincoded.com/" +
+                  myprofile.image
             }
           />
           <div className="flex justify-center">
@@ -35,11 +38,16 @@ const MyProfile = () => {
       <div className="flex flex-col pt-[200px] pl-11 gap-6">
         <div>
           <div className="text-[#4563AA] font-bold">USERNAME</div>
-          <div className="text-[#393939]">{myprofile.username}</div>
+          <div className="text-[#393939]">
+            {isLoading ? "Loading" : myprofile.username}
+          </div>
         </div>
         <div>
           <div className="text-[#4563AA] font-bold">CURRENT BALANCE</div>
-          <div className="text-[#393939]"> {myprofile.balance}</div>
+          <div className="text-[#393939]">
+            {" "}
+            {isLoading ? "Loading" : myprofile.balance}
+          </div>
         </div>
       </div>
     </div>
