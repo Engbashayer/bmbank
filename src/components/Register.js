@@ -5,13 +5,9 @@ import { register } from "../api/auth";
 
 const Register = () => {
   const [userInfo, setUserInfo] = useState({});
-  const navigate = useNavigate();
+  const [user, setUser] = useContext(UserContext);
 
-  const { mutate: register_mutate } = useMutation({
-    mutationKey: ["register"],
-    mutationFn: () => register(userInfo),
-    onSuccess: () => navigate("/homepage"),
-  });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     if (e.target.name === "image") {
@@ -21,6 +17,14 @@ const Register = () => {
     }
   };
 
+  const { mutate: register_mutate } = useMutation({
+    mutationKey: ["register"],
+    mutationFn: () => register(userInfo),
+    onSuccess: () => {
+      setUser(true);
+      navigate("/login");
+    },
+  });
   const handleFormSubmit = (e) => {
     e.preventDefault();
     register_mutate();
@@ -50,23 +54,7 @@ const Register = () => {
               required
             />
           </div>
-          {/* <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-[#4563AA] text-sm font-medium mb-2"
-            >
-              Email
-            </label>
-            <input
-              placeholder="Enter Your E-mail"
-              type="email"
-              id="email"
-              name="email"
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-          </div> */}
+
           <div className="mb-4">
             <label
               htmlFor="password"

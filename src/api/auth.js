@@ -50,26 +50,26 @@ const getAllUsers = async () => {
   return data;
 };
 
-const GetYourTransactions = async () => {
+const getTransactions = async () => {
   const { data } = await instance.get("/mini-project/api/transactions/my");
   return data;
 };
 
-const depositToYourAccount = async (amount) => {
+const depositToAccount = async (amount) => {
   const res = await instance.put(`/mini-project/api/transactions/deposit`, {
     amount: amount,
   });
   return res.data;
 };
 
-const WithdrawFromYourAccount = async (amount) => {
+const withdrawFromAccount = async (amount) => {
   const res = await instance.put(`/mini-project/api/transactions/withdraw`, {
     amount: amount,
   });
   return res.data;
 };
 
-const transferToAnotherUserFromYourAccount = async (amount, username) => {
+const transferToAnotherUser = async (amount, username) => {
   const res = await instance.put(
     `/mini-project/api/transactions/transfer/${username}`,
     {
@@ -84,4 +84,28 @@ const getUserInfoByUserUserId = async () => {
   const { data } = await instance.get(`/mini-project/api/auth/user/${userId}`);
   return data;
 };
-export { getAllUsers, register };
+
+const getYourProfile = async () => {
+  const { data } = await instance.get("/mini-project/api/auth/me");
+  return data;
+};
+
+const updateYourProfile = async (image) => {
+  const res = await instance.put(`/mini-project/api/auth/profile`, {
+    image: image,
+  });
+  return res.data;
+};
+
+export {
+  checkToken,
+  login,
+  logout,
+  getAllUsers,
+  register,
+  getUserInfoByUserUserId,
+  transferToAnotherUser,
+  withdrawFromAccount,
+  depositToAccount,
+  getTransactions,
+};
