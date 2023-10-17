@@ -31,7 +31,7 @@ const NavBar = () => {
           MY TRANSACTIONS
         </NavLink>
         <NavLink
-          to="/usersList"
+          to="/users"
           className="text-1xl min-w-max font-regular text-white border border-[#4563AA] pt-3px pb-3px"
         >
           USERS

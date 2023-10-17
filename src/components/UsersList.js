@@ -1,8 +1,6 @@
 import React from "react";
-import { getAllUsers } from "../api/auth";
-import { useQuery } from "@tanstack/react-query";
 
-const Users = () => {
+const UsersList = () => {
   return (
     <div>
       <div>usersList</div>
@@ -10,4 +8,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default UsersList;
