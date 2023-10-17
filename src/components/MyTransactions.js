@@ -57,17 +57,75 @@ const MyTransactions = () => {
           ACTIONS
         </div>
         <div className="w-full flex items-center gap-8 text-center justify-center pt-20 pb-20">
-          <div className="flex justify-center">
-            <img
-              className="w-3/4 drop-shadow-2xl"
-              src="/assets/deposit-button.svg"
-            />
+          <div className="flex justify-center flex-col gap-10 p-11">
+            <div className="text-[#4563AA] text-2xl">WITHDRAW</div>
+            <div className="flex justify-center flex-col">
+              <div className="w-full">
+                <img
+                  className="w-[100px] bg-[#4563AA] drop-shadow-2xl"
+                  src="/assets/deposit-icon.svg"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label
+                  htmlFor="email"
+                  className="block text-[#4563AA] text-sm font-medium mb-2"
+                >
+                  Amount
+                </label>
+                <input
+                  placeholder="Enter Withdraw Amount"
+                  type="number"
+                  id="amount"
+                  name="amount"
+                  // onChange={handleChange}
+                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA]"
+                >
+                  WITHDRAW
+                </button>
+              </div>
+            </div>
           </div>
-          <div className="flex justify-center">
-            <img
-              className="w-3/4 drop-shadow-2xl"
-              src="/assets/withdraw-button.svg"
-            />
+          <div className="flex justify-center flex-col gap-10 p-11">
+            <div className="text-[#4563AA] text-2xl">WITHDRAW</div>
+            <div className="flex justify-center flex-col">
+              <div className="w-full">
+                <img
+                  className="w-[100px] bg-[#4563AA] drop-shadow-2xl"
+                  src="/assets/withdraw-icon.svg"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label
+                  htmlFor="email"
+                  className="block text-[#4563AA] text-sm font-medium mb-2"
+                >
+                  Amount
+                </label>
+                <input
+                  placeholder="Enter Withdraw Amount"
+                  type="number"
+                  id="amount"
+                  name="amount"
+                  // onChange={handleChange}
+                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA]"
+                >
+                  WITHDRAW
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

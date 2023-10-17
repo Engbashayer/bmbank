@@ -35,7 +35,7 @@ const Register = () => {
       <div>
         <img src="/assets/welcome-design.svg" />
       </div>
-      <div className="w-1/2 flex flex-col p-250px">
+      <div className="w-1/2 flex flex-col">
         <form onSubmit={handleFormSubmit}>
           <div className="mb-4">
             <label
@@ -47,8 +47,8 @@ const Register = () => {
             <input
               placeholder="Enter Your Usename"
               type="text"
-              id="name"
-              name="name"
+              id="username"
+              name="username"
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
@@ -88,11 +88,10 @@ const Register = () => {
               required
             />
           </div>
-          <Link className="w-full flex text-center justify-center" to="/login">
-            <button className="text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA]">
-              REGISTER
-            </button>
-          </Link>
+
+          <button className="text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA]">
+            REGISTER
+          </button>
         </form>
       </div>
     </div>

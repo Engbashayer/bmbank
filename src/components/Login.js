@@ -32,7 +32,7 @@ const Login = () => {
       <div>
         <img src="/assets/welcome-design.svg" />
       </div>
-      <div className="w-1/2 flex flex-col p-250px">
+      <div className="w-1/2 flex flex-col">
         <form onSubmit={handleFormSubmit}>
           <div className="mb-4">
             <label
@@ -66,17 +66,13 @@ const Login = () => {
               required
             />
           </div>
-          <Link
-            className="w-full flex text-center justify-center"
-            to="/homepage"
+
+          <button
+            type="submit"
+            className="text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA]"
           >
-            <button
-              type="submit"
-              className="text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA]"
-            >
-              LOGIN
-            </button>
-          </Link>
+            LOGIN
+          </button>
         </form>
       </div>
     </div>
