@@ -1,12 +1,87 @@
 import instance from ".";
+import jwt_decode from "jwt-decode";
 
-const getAllUsers = async () => {
-  const { data } = await instance.get("/auth/users");
+const login = async (userInfo) => {
+  const { data } = await instance.post(
+    "/mini-project/api/auth/login",
+    userInfo
+  );
+
+  storeToken(data?.token);
   return data;
 };
 
-const register = async (userInfo) => {
-  const { data } = await instance.post("/mini-project/api/auth/register");
+const logout = () => {
+  localStorage.removeItem("token");
 };
 
+const storeToken = (token) => {
+  localStorage.setItem("token", token);
+};
+
+const checkToken = () => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    const decode = jwt_decode(token);
+    const currentTime = Date.now() / 1000;
+    if (decode.exp < currentTime) {
+      localStorage.removeItem("token");
+      return false;
+    }
+    return true;
+  }
+  return false;
+};
+
+const register = async (userInfo) => {
+  const formData = new FormData();
+  for (const key in userInfo) formData.append(key, userInfo[key]);
+
+  const { data } = await instance.post(
+    "/mini-project/api/auth/register",
+    formData
+  );
+  storeToken(data?.token);
+  return data;
+};
+
+const getAllUsers = async () => {
+  const { data } = await instance.get("/mini-project/api/auth/users");
+  return data;
+};
+
+const GetYourTransactions = async () => {
+  const { data } = await instance.get("/mini-project/api/transactions/my");
+  return data;
+};
+
+const depositToYourAccount = async (amount) => {
+  const res = await instance.put(`/mini-project/api/transactions/deposit`, {
+    amount: amount,
+  });
+  return res.data;
+};
+
+const WithdrawFromYourAccount = async (amount) => {
+  const res = await instance.put(`/mini-project/api/transactions/withdraw`, {
+    amount: amount,
+  });
+  return res.data;
+};
+
+const transferToAnotherUserFromYourAccount = async (amount, username) => {
+  const res = await instance.put(
+    `/mini-project/api/transactions/transfer/${username}`,
+    {
+      amount: amount,
+      username: username,
+    }
+  );
+  return res.data;
+};
+
+const getUserInfoByUserUserId = async () => {
+  const { data } = await instance.get(`/mini-project/api/auth/user/${userId}`);
+  return data;
+};
 export { getAllUsers, register };
