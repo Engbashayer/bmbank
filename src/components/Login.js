@@ -14,7 +14,7 @@ const Login = () => {
     mutationFn: () => login(userInfo),
     onSuccess: () => {
       setUser(true);
-      // navigate("/homepage");
+      navigate("/homepage");
     },
   });
 
@@ -38,7 +38,9 @@ const Login = () => {
             <label
               htmlFor="email"
               className="block text-[#4563AA] text-sm font-medium mb-2"
-            ></label>
+            >
+              Username
+            </label>
             <input
               placeholder="Enter Your Username"
               type="text"

@@ -14,7 +14,7 @@ import UserContext from "./context/UserContext";
 import { checkToken } from "./api/auth";
 
 function App() {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     setUser(checkToken()); //هني خليت اليوزر هو ترو او فالس  الخاص بالتوكن

@@ -80,7 +80,7 @@ const transferToAnotherUser = async (amount, username) => {
   return res.data;
 };
 
-const getUserInfoByUserUserId = async () => {
+const getUserInfoByUserUserId = async (userId) => {
   const { data } = await instance.get(`/mini-project/api/auth/user/${userId}`);
   return data;
 };
@@ -103,9 +103,11 @@ export {
   logout,
   getAllUsers,
   register,
+  getYourProfile,
   getUserInfoByUserUserId,
   transferToAnotherUser,
   withdrawFromAccount,
+  updateYourProfile,
   depositToAccount,
   getTransactions,
 };

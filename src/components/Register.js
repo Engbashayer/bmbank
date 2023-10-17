@@ -22,7 +22,7 @@ const Register = () => {
     mutationFn: () => register(userInfo),
     onSuccess: () => {
       setUser(true);
-      // navigate("/login");
+      navigate("/login");
     },
   });
   const handleFormSubmit = (e) => {
