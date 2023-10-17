@@ -32,11 +32,11 @@ const Register = () => {
 
   return (
     <div className="w-full flex">
-      <div>
+      <div className="w-1/2 h-screen bg-[#A8B6D4]">
         <img src="/assets/welcome-design.svg" />
       </div>
-      <div className="w-1/2 flex flex-col">
-        <form onSubmit={handleFormSubmit}>
+      <div className="w-1/2 flex flex-col justify-center items-center">
+        <form className="w-1/2 flex flex-col" onSubmit={handleFormSubmit}>
           <div className="mb-4">
             <label
               htmlFor="name"
@@ -88,10 +88,11 @@ const Register = () => {
               required
             />
           </div>
-
-          <button className="text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA]">
-            REGISTER
-          </button>
+          <div className="w-full flex justify-center pt-4">
+            <button className="text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA]">
+              REGISTER
+            </button>
+          </div>
         </form>
       </div>
     </div>
