@@ -12,7 +12,7 @@ import UsersList from "./components/UsersList";
 import { useEffect, useState } from "react";
 import UserContext from "./context/UserContext";
 import { checkToken } from "./api/auth";
-// import UserDetail from "./components/UserDetail";
+
 function App() {
   const [user, setUser] = useState(false);
 

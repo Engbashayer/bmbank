@@ -14,7 +14,7 @@ const Login = () => {
     mutationFn: () => login(userInfo),
     onSuccess: () => {
       setUser(true);
-      navigate("/homepage");
+      // navigate("/homepage");
     },
   });
 
@@ -33,7 +33,7 @@ const Login = () => {
         <img src="/assets/welcome-design.svg" />
       </div>
       <div className="w-1/2 flex flex-col p-250px">
-        <form onChange={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit}>
           <div className="mb-4">
             <label
               htmlFor="email"
