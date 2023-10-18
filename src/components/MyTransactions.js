@@ -1,13 +1,78 @@
-import React from "react";
+import react, { useContext, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+
+import {
+  getTransactions,
+  getYourProfile,
+  depositToAccount,
+  withdrawFromAccount,
+  getUserInfoByUserId,
+} from "../api/auth";
+import UserContext from "../context/UserContext";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 const MyTransactions = () => {
-  //   const { mutate: depositToAccount_mutate } = useMutation({
-  //     mutationKey: ["depositToAccount"],
-  //     mutationFn: () => depositToAccount(amount),
-  //     onSuccess: () => {
-  //       setUser(true);
-  //     },
-  // });
+  const [amountW, setAmountW] = useState(0);
+  const [amountD, setAmountD] = useState(0);
+  const [userInfo, setUserInfo] = useState({});
+  const [user, setUser] = useContext(UserContext);
+  const queryClient = useQueryClient();
+
+  const { data: myTransactions } = useQuery({
+    queryKey: ["myTransactions"],
+    queryFn: () => getTransactions(),
+  });
+
+  const { mutate: deposit } = useMutation({
+    mutationKey: ["deposit"],
+    mutationFn: () => depositToAccount(amountD),
+    onSuccess: () => {
+      setUser(true);
+      queryClient.invalidateQueries(["myprofile"]);
+    },
+  });
+
+  const { mutate: withdraw } = useMutation({
+    mutationKey: ["withdraw"],
+    mutationFn: () => withdrawFromAccount(amountW),
+    onSuccess: () => {
+      setUser(true);
+      queryClient.invalidateQueries(["myprofile"]);
+    },
+  });
+
+  const handleDeposit = (amountD) => {
+    deposit();
+  };
+  const handleWithdraw = (amountW) => {
+    withdraw();
+  };
+
+  const { data: myprofile, isLoading } = useQuery({
+    queryKey: ["myprofile"],
+    queryFn: () => getYourProfile(),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["myprofile"]);
+    },
+  });
+
+  const { data: getbyUserId } = useQuery({
+    queryKey: ["getbyUserId"],
+    queryFn: () => getUserInfoByUserId(),
+  });
+
+  //now myTransactions is an obj that holds my transactions
+
+  const handleAmountW = (e) => {
+    setAmountW(e.target.value);
+  };
+
+  const handleAmountD = (e) => {
+    setAmountD(e.target.value);
+  };
+  // hello {myTransactions.items.map((item) => item.name)}
+  //{myTransactions.forEach((element) => {})}
+
   return (
     <div className="p-11 ">
       <div className="flex flex-col gap-6">
@@ -16,7 +81,9 @@ const MyTransactions = () => {
           <div className="text-[#4563AA] rounded-full font-bold text-2xl">
             MY CURRENT BALANCE
           </div>
-          <div className="text-[#393939]">KD 1000</div>
+          <div className="text-[#393939]">
+            {isLoading ? "Loading" : myprofile.balance} KD
+          </div>
         </div>
       </div>
       <div className="text-[#4563AA] pt-11 pb-6 rounded-full font-bold text-2xl">
@@ -32,7 +99,6 @@ const MyTransactions = () => {
             id="form1"
             className="form-control"
             placeholder="Search"
-            // onChange={(e) => setQuery(e.target.value)}
           />
         </div>
       </div>
@@ -50,7 +116,9 @@ const MyTransactions = () => {
       <div className="text-[#4563AA] rounded-full font-bold text-2xl pb-11">
         MY TRANSACTIONS
       </div>
-      <div className="w-full h-[100px] rounded-2xl border border-[#4563AA]"></div>
+      <div className="w-full h-[100px] rounded-2xl border border-[#4563AA]">
+        hello
+      </div>
       <div>
         <div className="text-[#4563AA] pt-11 pb-6 font-bold text-2xl">
           ACTIONS
@@ -70,16 +138,17 @@ const MyTransactions = () => {
 
               <div className="flex flex-col gap-5">
                 <input
-                  placeholder="Enter Withdraw Amount"
+                  placeholder="Enter Deposit Amount"
                   type="number"
                   id="amount"
-                  name="amount"
-                  // onChange={handleChange}
+                  name="deposit"
+                  onChange={handleAmountD}
                   className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
                 <div className="w-full flex justify-center">
                   <button
+                    onClick={handleDeposit}
                     type="submit"
                     className=" w-[200px] text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA] hover:bg-[#7590D1]"
                   >
@@ -107,12 +176,13 @@ const MyTransactions = () => {
                   type="number"
                   id="amount"
                   name="amount"
-                  // onChange={handleChange}
+                  onChange={handleAmountW}
                   className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
                 <div className="w-full flex justify-center">
                   <button
+                    onClick={handleWithdraw}
                     type="submit"
                     className=" w-[200px] text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA] hover:bg-[#7590D1]"
                   >
