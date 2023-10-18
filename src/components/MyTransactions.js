@@ -117,7 +117,20 @@ const MyTransactions = () => {
         MY TRANSACTIONS
       </div>
       <div className="w-full h-[100px] rounded-2xl border border-[#4563AA]">
-        hello
+        <div className="w-full h-[40px] items-center flex flex-row justify-around rounded-t-2xl bg-[#4563AA]">
+          <div className="text-white font-bold">AMOUNT</div>
+          <div className="text-white font-bold">FROM</div>
+          <div className="text-white font-bold">TO</div>
+          <div className="text-white font-bold">METHOD</div>
+          <div className="text-white font-bold">ID</div>
+        </div>
+        <div className="w-full h-[40px] items-center flex flex-row justify-around rounded-t-2xl">
+          <div className="text-[#262a34] font-bold p-4">AMOUNT</div>
+          <div className="text-[#262a34] font-bold p-4">FROM</div>
+          <div className="text-[#262a34] font-bold p-4">TO</div>
+          <div className="text-[#262a34] font-bold p-4">METHOD</div>
+          <div className="text-[#262a34] font-bold p-4">ID</div>
+        </div>
       </div>
       <div>
         <div className="text-[#4563AA] pt-11 pb-6 font-bold text-2xl">
