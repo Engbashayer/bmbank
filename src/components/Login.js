@@ -2,7 +2,7 @@ import { login } from "../api/auth";
 import React, { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import UserContext from "../context/UserContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -75,6 +75,12 @@ const Login = () => {
             >
               LOGIN
             </button>
+          </div>
+          <div className="flex flex-row gap-4 justify-center pt-6">
+            <div>Not a Use?</div>
+            <Link className="hover:font-bold" to="/register">
+              Register
+            </Link>
           </div>
         </form>
       </div>

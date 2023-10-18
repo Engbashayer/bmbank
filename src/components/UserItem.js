@@ -2,19 +2,23 @@ import React from "react";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { transferToAnotherUser } from "../api/auth";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+
 const UserItem = ({ user }) => {
   const [amountT, setAmountT] = useState(0);
+
+  const queryClient = useQueryClient();
 
   const { mutate: transfer } = useMutation({
     mutationKey: ["transfer"],
     mutationFn: () => transferToAnotherUser(amountT, user.username),
-    // onSuccess: () => {
-    //   setUser(tru
-    //   // queryClient.invalidateQueries(["user"]);
-    // },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["user"]);
+    },
   });
 
   const handleTransfer = (e) => {
+    e.preventDefault();
     setAmountT(e.target.value);
   };
   const transferAmount = () => {

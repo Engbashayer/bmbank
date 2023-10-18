@@ -24,7 +24,7 @@ function App() {
     <UserContext.Provider value={[user, setUser]}>
       <div className=" max-height: 100vh">
         <NavBar></NavBar>
-        <h1>{`${user}`}</h1>
+
         <Routes>
           <Route path="*" Component={NotFound} />
           <Route path="/" Component={Home} />

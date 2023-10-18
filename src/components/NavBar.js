@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import UserContext from "../context/UserContext";
+import { logout } from "../api/auth";
 
 const NavBar = () => {
+  const [user, setUser] = useContext(UserContext);
+
+  const handleLogout = () => {
+    setUser(false);
+    logout();
+  };
   return (
     <div className="h-20 bg-[#4563AA] flex items-center px-12">
       <div className="w-full gap-4 flex min-w-max">
@@ -37,21 +45,30 @@ const NavBar = () => {
           USERS
         </NavLink>
         <div className="text-white font-bold">|</div>
-        <Link className="text-1xl min-w-max font-regular text-white border border-[#4563AA] pt-3px pb-3px">
-          LOGOUT
-        </Link>
-        <NavLink
-          to="/register"
-          className="text-1xl min-w-max font-regular text-white border border-[#4563AA] pt-3px pb-3px"
-        >
-          REGISTER
-        </NavLink>
-        <NavLink
-          to="/login"
-          className="text-1xl min-w-max font-regular text-white border border-[#4563AA] pt-3px pb-3px"
-        >
-          LOGIN
-        </NavLink>
+        {user ? (
+          <Link
+            to="/"
+            onClick={handleLogout}
+            className="text-1xl min-w-max font-regular text-white border border-[#4563AA] pt-3px pb-3px"
+          >
+            LOGOUT
+          </Link>
+        ) : (
+          <>
+            <NavLink
+              to="/register"
+              className="text-1xl min-w-max font-regular text-white border border-[#4563AA] pt-3px pb-3px"
+            >
+              REGISTER
+            </NavLink>
+            <NavLink
+              to="/login"
+              className="text-1xl min-w-max font-regular text-white border border-[#4563AA] pt-3px pb-3px"
+            >
+              LOGIN
+            </NavLink>
+          </>
+        )}
       </div>
     </div>
   );
