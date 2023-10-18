@@ -119,7 +119,7 @@ const MyTransactions = () => {
       <div className="text-[#4563AA] rounded-full font-bold text-2xl pb-11">
         MY TRANSACTIONS
       </div>
-      <div className="w-full h-[100px] rounded-2xl border border-[#4563AA]">
+      <div className="w-full h-fit rounded-2xl border border-[#4563AA]">
         <div className="w-full h-[40px] items-center flex flex-row justify-around rounded-t-2xl bg-[#4563AA]">
           <div className="text-white font-bold">AMOUNT</div>
           <div className="text-white font-bold">FROM</div>
@@ -127,7 +127,7 @@ const MyTransactions = () => {
           <div className="text-white font-bold">METHOD</div>
           <div className="text-white font-bold">ID</div>
         </div>
-        <div>{mappedTransaction}</div>
+        <div className=" overflow-scroll">{mappedTransaction}</div>
       </div>
       <div>
         <div className="text-[#4563AA] pt-11 pb-6 font-bold text-2xl">
