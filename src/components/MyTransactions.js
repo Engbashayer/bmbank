@@ -12,7 +12,7 @@ const MyTransactions = () => {
     <div className="p-11 ">
       <div className="flex flex-col gap-6">
         <div className="text-[#4563AA] font-bold text-2xl">MY TRANSACTIONS</div>
-        <div className="bg-[#ffffff] p-11 drop-shadow-2xl rounded-2xl">
+        <div className="bg-[#ffffff] p-11 flex flex-col gap-8 drop-shadow-[0_10px_10px_rgba(0,0,0,0.30)] rounded-2xl">
           <div className="text-[#4563AA] rounded-full font-bold text-2xl">
             MY CURRENT BALANCE
           </div>
@@ -37,13 +37,13 @@ const MyTransactions = () => {
         </div>
       </div>
       <div className="w-full flex flex-row justify-center p-11 gap-11">
-        <div className="text-white rounded-full font-bold text-2xm p-4 px-12 bg-[#4563AA]">
+        <div className="text-white rounded-full font-bold text-2xm p-4 px-12 bg-[#4563AA] hover:bg-[#7590D1] cursor-pointer">
           TRANSFERS
         </div>
-        <div className="text-white rounded-full font-bold text-2xm p-4 px-12 bg-[#4563AA]">
+        <div className="text-white rounded-full font-bold text-2xm p-4 px-12 bg-[#4563AA] hover:bg-[#7590D1] cursor-pointer">
           DEPOSITS
         </div>
-        <div className="text-white rounded-full font-bold text-2xm p-4 px-12 bg-[#4563AA]">
+        <div className="text-white rounded-full font-bold text-2xm p-4 px-12 bg-[#4563AA] hover:bg-[#7590D1] cursor-pointer">
           WITHDRAWALS
         </div>
       </div>
@@ -81,7 +81,7 @@ const MyTransactions = () => {
                 <div className="w-full flex justify-center">
                   <button
                     type="submit"
-                    className=" w-[200px] text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA]"
+                    className=" w-[200px] text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA] hover:bg-[#7590D1]"
                   >
                     DEPOSIT
                   </button>
@@ -114,7 +114,7 @@ const MyTransactions = () => {
                 <div className="w-full flex justify-center">
                   <button
                     type="submit"
-                    className=" w-[200px] text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA]"
+                    className=" w-[200px] text-white rounded-full font-bold text-1xl p-2 px-10 bg-[#4563AA] hover:bg-[#7590D1]"
                   >
                     WITHDRAW
                   </button>
